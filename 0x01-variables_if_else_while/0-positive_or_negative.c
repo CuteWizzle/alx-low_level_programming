@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlid.h>
+#include <stdlib.h>
 #include <time.h>
 /**
  * main - Assign a random number to int n every time it executes, and print it
@@ -7,6 +7,7 @@
  */
 int main(void)
 {
+
 	int n;
 
 	srand(time(0));
