@@ -4,7 +4,7 @@
  * print_alphabets - print alphabets in lowercase and new line
  */
 
-void print_alphabet(void);
+void print_alphabet(void)
 {
 	char la;
 
