@@ -22,5 +22,6 @@ do	{
 		break;
 	}
 	while (*s++)
+		;
 	return (num * sign);
 }
