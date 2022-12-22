@@ -1,22 +1,29 @@
 #include "main.h"
 
 /**
-*_strncat - a function that concatenates two strings
-*@dest: pointer to destination input
-*@src: pointer to source input
-*@n: most number of bytes from @src
-*Return: @dest
+*_strncat - join two strings with n byte
+*@dest: copy to
+*@src: cooy from
+*@n: number of char to be copied
+*Return: dest
 */
 
 char *_strncat(char *dest, char *src, int n)
 {
-	int c, i;
+	int a, b;
 
-	c = 0;
-	while (dest[c])
-		c++;
-	for (i = 0; i < n && src[i] != '\0'; i++)
-		dest[c + i] = src[i];
-		dest[c + i] = '\0';
+	a = 0;
+	while (dest[a] != '\0')
+	{
+		a++;
+	}
+	b = 0;
+	while (b < n && src[b] != '\0')
+	{
+		dest[a] = src[b];
+		a++;
+		b++;
+	}
+	dest[a] = '\0';
 	return (dest);
 }
