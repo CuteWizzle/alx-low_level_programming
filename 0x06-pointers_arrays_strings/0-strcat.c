@@ -14,9 +14,17 @@ char *_strcat(char *dest, char *src)
 
 	c = 0;
 	/** find the size of dest array*/
-	while (dest[c])
+	while (dest[c] != '\0')
+	{
 		c++;
-	for (c2 = 0; src[c2] ; c2++)
-	dest[c++] = src[c2];
+	}
+	c2 = 0;
+	while (src[c2] != '\0')
+	{
+		dest[c] = src[c2];
+		c++;
+		c2++;
+	}
+	dest[c] = '\0';
 	return (dest);
 }
