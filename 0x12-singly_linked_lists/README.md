@@ -1,4 +1,4 @@
-ingly linked lists
+singly linked lists
 
 0. Print list
 
