@@ -1,72 +1,32 @@
 #include "lists.h"
 
 /**
- * free_listp2 - frees a linked list
- * @head: head of a list.
+ * add_nodeint - a function that adds a new node at the
+ *              beginning of a list
  *
- * Return: no return.
- */
-void free_listp2(listp_t **head)
-{
-	listp_t *temp;
-	listp_t *curr;
-
-	if (head != NULL)
-	{
-		curr = *head;
-		while ((temp = curr) != NULL)
-		{
-			curr = curr->next;
-			free(temp);
-		}
-		*head = NULL;
-	}
-}
-
-/**
- * free_listint_safe - frees a linked list.
- * @h: head of a list.
+ * @head: pointer to the first node
+ * @n: integer n to add in a new node
  *
- * Return: size of the list that was freed.
- */
-size_t free_listint_safe(listint_t **h)
+ * Return: address of the new element or NULL if it fails
+*/
+
+listint_t *add_nodeint(listint_t **head, const int n)
 {
-	size_t nnodes = 0;
-	listp_t *hptr, *new, *add;
-	listint_t *curr;
+	listint_t *new_node;
 
-	hptr = NULL;
-	while (*h != NULL)
-	{
-		new = malloc(sizeof(listp_t));
+	new_node = malloc(sizeof(listint_t));
+	if (new_node == NULL)
+		return (NULL);
 
-		if (new == NULL)
-			exit(98);
+	/*link first node in head with the new_node*/
+	if (*head == NULL)
+		new_node->next = NULL;
+	else
+		new_node->next = *head;
 
-		new->p = (void *)*h;
-		new->next = hptr;
-		hptr = new;
+	new_node->n = n;
+	/*add new node at the beginning of the list*/
+	*head = new_node;
 
-		add = hptr;
-
-		while (add->next != NULL)
-		{
-			add = add->next;
-			if (*h == add->p)
-			{
-				*h = NULL;
-				free_listp2(&hptr);
-				return (nnodes);
-			}
-		}
-
-		curr = *h;
-		*h = (*h)->next;
-		free(curr);
-		nnodes++;
-	}
-
-	*h = NULL;
-	free_listp2(&hptr);
-	return (nnodes);
+	return (*head);
 }
