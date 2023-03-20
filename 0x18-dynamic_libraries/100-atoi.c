@@ -1,27 +1,35 @@
 #include "main.h"
-#include <stdio.h>
-#include <time.h>
 
 /**
-*_atoi - converts a string to an integer
-*@s: string input
-*Return: converted integer from string
-*/
-
+ * _atoi - converts a string to an integer.
+ * @s: params
+ * Return: something
+ */
 int _atoi(char *s)
 {
-	unsigned int num = 0;
-	int sign = 1;
+	unsigned int count = 0, size = 0, j = 0, k = 1, m = 1, i;
 
-do	{
-	if (*s == '-')
-		sign *= -1;
-	else if (*s >= '0' && *s <= '9')
-		num = (num * 10) + (*s - '0');
-	else if (num > 0)
-		break;
+	while (*(s + count) != '\0')
+	{
+		if (size > 0 && (*(s + count) < '0' || *(s + count) > '9'))
+			break;
+
+		if (*(s + count) == '-')
+			k *= -1;
+
+		if ((*(s + count) >= '0') && (*(s + count) <= '9'))
+		{
+			if (size > 0)
+				m *= 10;
+			size++;
+		}
+		count++;
 	}
-	while (*s++)
-		;
-	return (num * sign);
+
+	for (i = count - size; i < count; i++)
+	{
+		j = j + ((*(s + i) - 48) * m);
+		m /= 10;
+	}
+	return (j * k);
 }
